@@ -65,6 +65,7 @@ var receiverFactories = map[string]func(FactoryConfig) (NotificationChannel, err
 	"victorops":               VictorOpsFactory,
 	"webhook":                 WebHookFactory,
 	"wecom":                   WeComFactory,
+	"airflow":                 AirflowFactory,
 }
 
 func Factory(receiverType string) (func(FactoryConfig) (NotificationChannel, error), bool) {

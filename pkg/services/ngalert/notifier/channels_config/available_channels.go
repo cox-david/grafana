@@ -933,5 +933,85 @@ func GetAvailableNotifiers() []*NotifierPlugin {
 				},
 			},
 		},
+		{
+			Type:        "Airflow",
+			Name:        "Airflow",
+			Description: "Trigger DAGRun Ariflow from notify",
+			Heading:     "Airflow notify settings",
+			Options: []NotifierOption{
+				{
+					Label:        "url",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					Placeholder:  "https://airflow.apache.org",
+					PropertyName: "url",
+					Required:     true,
+				},
+				{
+					Label:        "DAG ID",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					PropertyName: "dagId",
+					Required:     true,
+				},
+				{
+					Label:        "Username",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					PropertyName: "username",
+				},
+				{
+					Label:        "Password",
+					Element:      ElementTypeInput,
+					InputType:    InputTypePassword,
+					PropertyName: "password",
+					Secure:       true,
+				},
+				{
+					Label:        "Run ID",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					Description:  "If the specified Run ID is in use, the creation request fails with an ALREADY_EXISTS error",
+					PropertyName: "runId",
+				},
+				{
+					Label:        "Logical Date",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					Description:  "This is time or interval covered by this DAG run, according to the DAG definition",
+					Placeholder:  "e.g. 2019-08-24T14:15:22Z",
+					PropertyName: "logicalDate",
+				},
+				{
+					Label:   "State",
+					Element: ElementTypeSelect,
+					SelectOptions: []SelectOption{
+						{
+							Value: "queued",
+							Label: "Queued",
+						},
+						{
+							Value: "running",
+							Label: "Running",
+						},
+						{
+							Value: "success",
+							Label: "Success",
+						},
+						{
+							Value: "failed",
+							Label: "Failed",
+						},
+					},
+					PropertyName: "state",
+				},
+				{
+					Label:        "Conf",
+					Element:      ElementTypeTextArea,
+					Description:  "JSON object describing additional configuration parameters",
+					PropertyName: "conf",
+				},
+			},
+		},
 	}
 }
